@@ -1,2 +1,2 @@
 # sponsor-cosponsor-network
-python code for creating sponsor-cosponsor network from Congress.gov bill data
+The Python code in this repository creates a sponsor-cosponsor network from U.S. federal bill data, downloaded by Congress number and Legislative Subject Term from [Congress.gov] (https://www.congress.gov/browse/legislative-subject-terms/).
