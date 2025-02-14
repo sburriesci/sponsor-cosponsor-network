@@ -1,0 +1,191 @@
+node,label,sponsor,node_type,size,color,shape,sponsored,cosponsored,source
+1,H.J.Res. 12,"Rep. Zachary Nunn, R-IA",bill,128.0,#B22222,s,NA,NA,
+2,H.J.Res. 19,"Rep. Scott Perry, R-PA",bill,128.0,#B22222,s,NA,NA,
+3,H.J.Res. 2,"Rep. Vern Buchanan, R-FL",bill,128.0,#B22222,s,NA,NA,
+4,H.J.Res. 21,"Rep. Derrick Van Orden, R-WI",bill,128.0,#B22222,s,NA,NA,
+5,H.J.Res. 55,"Rep. Rudy Yakym, R-IN",bill,128.0,#B22222,s,NA,NA,
+6,H.J.Res. 56,"Rep. Mark E. Green, R-TN",bill,128.0,#B22222,s,NA,NA,
+7,H.J.Res. 67,"Rep. August Pfluger, R-TX",bill,128.0,#B22222,s,NA,NA,
+8,H.R. 1040,"Rep. Michael C. Burgess, R-TX",bill,128.0,#B22222,s,NA,NA,
+9,H.R. 1046,"Rep. Janice D. Schakowsky, D-IL",bill,128.0,#0047AB,s,NA,NA,
+10,H.R. 25,"Rep. Earl L. ""Buddy"" Carter, R-GA",bill,128.0,#B22222,s,NA,NA,
+11,H.R. 3938,"Rep. Jason Smith, R-MO",bill,128.0,#B22222,s,NA,NA,
+12,H.R. 579,"Rep. W. Gregory Steube, R-FL",bill,128.0,#B22222,s,NA,NA,
+13,H.R. 5988,"Rep. Jason Smith, R-MO",bill,128.0,#B22222,s,NA,NA,
+14,H.R. 7024,"Rep. Jason Smith, R-MO",bill,128.0,#B22222,s,NA,NA,
+15,H.Res. 5,"Rep. Steve Scalise, R-LA",bill,128.0,#B22222,s,NA,NA,
+16,S. 153,"Sen. Marco Rubio, R-FL",bill,128.0,#B22222,s,NA,NA,
+17,S. 2281,"Sen. Cynthia M. Lummis, R-WY",bill,128.0,#B22222,s,NA,NA,
+18,S. 3084,"Sen. Ron Wyden, D-OR",bill,128.0,#0047AB,s,NA,NA,
+19,S. 393,"Sen. Bernard Sanders, I-VT",bill,128.0,#FFAA33,s,NA,NA,
+20,S. 6,"Sen. Steve Daines, R-MT",bill,128.0,#B22222,s,NA,NA,
+21,S.J.Res. 1,"Sen. Rick Scott, R-FL",bill,128.0,#B22222,s,NA,NA,
+22,S.J.Res. 13,"Sen. Cindy Hyde-Smith, R-MS",bill,128.0,#B22222,s,NA,NA,
+23,S.J.Res. 14,"Sen. Mike Lee, R-UT",bill,128.0,#B22222,s,NA,NA,
+24,"Rep. August Pfluger, R-TX",NA,sponsor,128.0,#B22222,^,H.J.Res. 67,NA,
+25,"Rep. Derrick Van Orden, R-WI",NA,sponsor,128.0,#B22222,^,H.J.Res. 21,NA,
+26,"Rep. Earl L. ""Buddy"" Carter, R-GA",NA,sponsor,128.0,#B22222,^,H.R. 25,NA,
+27,"Rep. Janice D. Schakowsky, D-IL",NA,sponsor,128.0,#0047AB,^,H.R. 1046,NA,
+28,"Rep. Jason Smith, R-MO",NA,sponsor,128.0,#B22222,^,"H.R. 3938, H.R. 5988, H.R. 7024",NA,
+29,"Rep. Mark E. Green, R-TN",NA,sponsor,128.0,#B22222,^,H.J.Res. 56,NA,
+30,"Rep. Michael C. Burgess, R-TX",NA,sponsor,128.0,#B22222,^,H.R. 1040,NA,
+31,"Rep. Rudy Yakym, R-IN",NA,sponsor,128.0,#B22222,^,H.J.Res. 55,NA,
+32,"Rep. Scott Perry, R-PA",NA,sponsor/cosponsor,128.0,#B22222,H,H.J.Res. 19,H.R. 25,
+33,"Rep. Steve Scalise, R-LA",NA,sponsor,128.0,#B22222,^,H.Res. 5,NA,
+34,"Rep. Vern Buchanan, R-FL",NA,sponsor,128.0,#B22222,^,H.J.Res. 2,NA,
+35,"Rep. W. Gregory Steube, R-FL",NA,sponsor,128.0,#B22222,^,H.R. 579,NA,
+36,"Rep. Zachary Nunn, R-IA",NA,sponsor,128.0,#B22222,^,H.J.Res. 12,NA,
+37,"Sen. Bernard Sanders, I-VT",NA,sponsor,128.0,#FFAA33,^,S. 393,NA,
+38,"Sen. Cindy Hyde-Smith, R-MS",NA,sponsor,128.0,#B22222,^,S.J.Res. 13,NA,
+39,"Sen. Cynthia M. Lummis, R-WY",NA,sponsor/cosponsor,128.0,#B22222,H,S. 2281,S.J.Res. 13,
+40,"Sen. Marco Rubio, R-FL",NA,sponsor,128.0,#B22222,^,S. 153,NA,
+41,"Sen. Mike Lee, R-UT",NA,sponsor/cosponsor,128.0,#B22222,H,S.J.Res. 14,S.J.Res. 13,
+42,"Sen. Rick Scott, R-FL",NA,sponsor,128.0,#B22222,^,S.J.Res. 1,NA,
+43,"Sen. Ron Wyden, D-OR",NA,sponsor,128.0,#0047AB,^,S. 3084,NA,
+44,"Sen. Steve Daines, R-MT",NA,sponsor/cosponsor,128.0,#B22222,H,S. 6,S.J.Res. 13,
+45,"Del. Eleanor Holmes Norton, D-DC",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+46,"Del. Gregorio Kilili Camacho Sablan, D-MP",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+47,"Del. Stacey E. Plaskett, D-VI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+48,"Rep. Adrian Smith, R-NE",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+49,"Rep. Al Green, D-TX",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+50,"Rep. Alexandria Ocasio-Cortez, D-NY",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+51,"Rep. Alma S. Adams, D-NC",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+52,"Rep. Andrew Ogles, R-TN",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 19,2.0
+53,"Rep. Andrew S. Clyde, R-GA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+54,"Rep. Andy Biggs, R-AZ",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+55,"Rep. Barbara Lee, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+56,"Rep. Barry Loudermilk, R-GA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+57,"Rep. Barry Moore, R-AL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+58,"Rep. Beth Van Duyne, R-TX",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+59,"Rep. Bill Posey, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 19,2.0
+60,"Rep. Blake D. Moore, R-UT",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+61,"Rep. Bob Good, R-VA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+62,"Rep. Brad Finstad, R-MN",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+63,"Rep. Brad R. Wenstrup, R-OH",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+64,"Rep. Brett Guthrie, R-KY",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+65,"Rep. Brian K. Fitzpatrick, R-PA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+66,"Rep. Burgess Owens, R-UT",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+67,"Rep. Byron Donalds, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+68,"Rep. Chellie Pingree, D-ME",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+69,"Rep. Christopher R. Deluzio, D-PA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+70,"Rep. Claudia Tenney, R-NY",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+71,"Rep. Clay Higgins, R-LA",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+72,"Rep. Cori Bush, D-MO",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+73,"Rep. Dale W. Strong, R-AL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+74,"Rep. Daniel S. Goldman, D-NY",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+75,"Rep. Daniel T. Kildee, D-MI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+76,"Rep. Darin LaHood, R-IL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+77,"Rep. David Kustoff, R-TN",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+78,"Rep. David Schweikert, R-AZ",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+79,"Rep. Don Bacon, R-NE",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+80,"Rep. Donald M., Jr. Payne, D-NJ",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+81,"Rep. Eric Burlison, R-MO",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+82,"Rep. Erin Houchin, R-IN",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+83,"Rep. Gary J. Palmer, R-AL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+84,"Rep. George Santos, R-NY",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+85,"Rep. Glenn Grothman, R-WI",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+86,"Rep. Grace F. Napolitano, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+87,"Rep. Greg Casar, D-TX",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+88,"Rep. Gregory F. Murphy, R-NC",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+89,"Rep. Gus M. Bilirakis, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+90,"Rep. Gwen Moore, D-WI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+91,"Rep. J. French Hill, R-AR",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+92,"Rep. Jake Ellzey, R-TX",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+93,"Rep. Jamaal Bowman, D-NY",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+94,"Rep. James Comer, R-KY",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+95,"Rep. James P. McGovern, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+96,"Rep. James R. Baird, R-IN",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+97,"Rep. Jamie Raskin, D-MD",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+98,"Rep. Jeff Duncan, R-SC",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+99,"Rep. Jerrold Nadler, D-NY",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+100,"Rep. Jesus G. ""Chuy"" Garcia, D-IL",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+101,"Rep. Jill N. Tokuda, D-HI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+102,"Rep. Jim Banks, R-IN",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+103,"Rep. Jimmy Gomez, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+104,"Rep. Jimmy Panetta, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+105,"Rep. John H. Rutherford, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+106,"Rep. John R. Carter, R-TX",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+107,"Rep. Josh Gottheimer, D-NJ",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+108,"Rep. Judy Chu, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+109,"Rep. Kat Cammack, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+110,"Rep. Katie Porter, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+111,"Rep. Ken Calvert, R-CA",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+112,"Rep. Kevin Hern, R-OK",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+113,"Rep. Linda T. Sánchez, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+114,"Rep. Lloyd Smucker, R-PA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+115,"Rep. Lois Frankel, D-FL",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+116,"Rep. Marjorie Taylor Greene, R-GA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+117,"Rep. Mark Pocan, D-WI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+118,"Rep. Mary Gay Scanlon, D-PA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+119,"Rep. Mary Sattler Peltola, D-AK",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+120,"Rep. Matt Gaetz, R-FL",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+121,"Rep. Michael Cloud, R-TX",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 19,2.0
+122,"Rep. Michael K. Simpson, R-ID",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+123,"Rep. Michael R. Turner, R-OH",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+124,"Rep. Michelle Fischbach, R-MN",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+125,"Rep. Michelle Steel, R-CA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+126,"Rep. Mike Carey, R-OH",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+127,"Rep. Mike Collins, R-GA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+128,"Rep. Mike Kelly, R-PA",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+129,"Rep. Mikie Sherrill, D-NJ",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+130,"Rep. Nicole Malliotakis, R-NY",NA,cosponsor,60.0,#B22222,o,NA,H.R. 5988,13.0
+131,"Rep. Pat Fallon, R-TX",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+132,"Rep. Pramila Jayapal, D-WA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+133,"Rep. Raja Krishnamoorthi, D-IL",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+134,"Rep. Ralph Norman, R-SC",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+135,"Rep. Rashida Tlaib, D-MI",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+136,"Rep. Raúl M. Grijalva, D-AZ",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+137,"Rep. Richard E. Neal, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+138,"Rep. Rick Larsen, D-WA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+139,"Rep. Rick W. Allen, R-GA",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+140,"Rep. Ro Khanna, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+141,"Rep. Robert E. Latta, R-OH",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+142,"Rep. Robert J. Wittman, R-VA",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+143,"Rep. Ron Estes, R-KS",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+144,"Rep. Ryan K. Zinke, R-MT",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 19,2.0
+145,"Rep. Seth Moulton, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+146,"Rep. Sheila Jackson Lee, D-TX",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+147,"Rep. Stephen F. Lynch, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+148,"Rep. Steve Cohen, D-TN",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+149,"Rep. Suzan K. DelBene, D-WA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 5988,13.0
+150,"Rep. Thomas Massie, R-KY",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+151,"Rep. Thomas P. Tiffany, R-WI",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+152,"Rep. Tim Walberg, R-MI",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+153,"Rep. Tony Cárdenas, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+154,"Rep. Tracey Mann, R-KS",NA,cosponsor,60.0,#B22222,o,NA,H.J.Res. 12,1.0
+155,"Rep. Troy Carter, D-LA",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+156,"Rep. Val T. Hoyle, D-OR",NA,cosponsor,60.0,#0047AB,o,NA,H.R. 1046,9.0
+157,"Rep. Virginia Foxx, R-NC",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+158,"Rep. Warren Davidson, R-OH",NA,cosponsor,60.0,#B22222,o,NA,H.R. 25,10.0
+159,"Sen. Alex Padilla, D-CA",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+160,"Sen. Bill Hagerty, R-TN",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+161,"Sen. Chris Van Hollen, D-MD",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+162,"Sen. Chuck Grassley, R-IA",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 14,23.0
+163,"Sen. Cory A. Booker, D-NJ",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+164,"Sen. Deb Fischer, R-NE",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+165,"Sen. Edward J. Markey, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+166,"Sen. Elizabeth Warren, D-MA",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+167,"Sen. Eric Schmitt, R-MO",NA,cosponsor,60.0,#B22222,o,NA,S. 6,20.0
+168,"Sen. James E. Risch, R-ID",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+169,"Sen. Jeff Merkley, D-OR",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+170,"Sen. John Barrasso, R-WY",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+171,"Sen. John Cornyn, R-TX",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+172,"Sen. John Hoeven, R-ND",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+173,"Sen. John Thune, R-SD",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+174,"Sen. Joni Ernst, R-IA",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+175,"Sen. Katie Boyd Britt, R-AL",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+176,"Sen. Kevin Cramer, R-ND",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+177,"Sen. Kirsten E. Gillibrand, D-NY",NA,cosponsor,60.0,#0047AB,o,NA,S. 2281,17.0
+178,"Sen. Markwayne Mullin, R-OK",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+179,"Sen. Marsha Blackburn, R-TN",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+180,"Sen. Mike Crapo, R-ID",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+181,"Sen. Pete Ricketts, R-NE",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+182,"Sen. Peter Welch, D-VT",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+183,"Sen. Roger F. Wicker, R-MS",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+184,"Sen. Roger Marshall, R-KS",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+185,"Sen. Sheldon Whitehouse, D-RI",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+186,"Sen. Shelley Moore Capito, R-WV",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+187,"Sen. Ted Budd, R-NC",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+188,"Sen. Thomas Tillis, R-NC",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
+189,"Sen. Tina Smith, D-MN",NA,cosponsor,60.0,#0047AB,o,NA,S. 393,19.0
+190,"Sen. Todd Young, R-IN",NA,cosponsor,60.0,#B22222,o,NA,S.J.Res. 13,22.0
