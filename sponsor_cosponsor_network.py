@@ -33,7 +33,7 @@ df = pd.read_csv(csvpath, header=2)
 df.drop(columns=['URL', 'Congress', 'Date of Introduction'], inplace=True)
 print(df.columns)
 
-# functions
+####### start functions #################################################################################
 def remove_parens(text):
   """
   Remove parenthetical from text.
@@ -85,8 +85,12 @@ def draw_netx_nodes(node_list, node_shape):
                          if isinstance(node_sizes, dict)
                          else [node_sizes[i] for i, node in enumerate(G.nodes)
                          if node in node_list], node_shape=node_shape)
+                         
+############## end functions #############################################################################
 
-# reshape the data
+
+
+# reshape the bill metadata
 ## melt the multiple cosponsor columns into one column,
 ## with one cosponsor per row
 ## (some bills have multiple cosponsors, others have none)
@@ -138,16 +142,17 @@ df_melted = df_melted.drop(columns=['variable',
                                     'cos_state'
                                     ])
 
-df_melted
 
 # make a dataframe of unique bills & their sponsors
+
+## group by bill number
 grouped = df_melted.groupby('Legislation Number')
 bill_sponsor_df = grouped.first().reset_index()[['Legislation Number',
                                          'sponsor',
                                          'sp_party']]
-bill_sponsor_df
 
-# make a dataframe of bill nodes
+
+## make a dataframe of bill nodes
 bill_sponsor_df.columns = ['label', 'sponsor', 'party']
 bill_sponsor_df['node_type'] = 'bill'
 bill_sponsor_df['size'] = 128
@@ -170,7 +175,7 @@ G = nx.Graph()
 for _, row in bill_sponsor_df.iterrows():
    G.add_node(row['node_id'], **row.drop('node_id').to_dict())
 
-# print nodes with attributes
+## print bill nodes with attributes
 for node, attributes in G.nodes(data=True):
     print(f"Node: {node}, Attributes: {attributes}")
 
@@ -190,27 +195,24 @@ sponsor_df['color'] = sponsor_df['party'].apply(lambda x:
 sponsor_df['shape'] = '^' # sponsor-only nodes will be triangles
 sponsor_df['node_id'] = sponsor_df.index + len(G.nodes) + 1
 
-# examine sponsor_df
-sponsor_df
-
 # add sponsor nodes to graph
 for _, row in sponsor_df.iterrows():
     G.add_node(row['node_id'], **row.drop('node_id').to_dict())
 
-# filter for nodes with the attribute 'node_type' == 'sponsor'
+## filter for nodes with the attribute 'node_type' == 'sponsor'
 sponsor_nodes = {node:
                  data for node,
                  data in G.nodes(data=True)
                  if data.get("node_type") == "sponsor"}
 
-# print sponsor nodes with attributes
+## print sponsor nodes with attributes
 for node, attributes in sponsor_nodes.items():
     print(f"Node: {node}, Attributes: {attributes}")
 
-# join sponsor_df to bill_df on sponsor name to get 'sponsored' bill(s)
+## join sponsor_df to bill_df on sponsor name to get 'sponsored' bill(s)
 sponsor_bill_df = sponsor_df.merge(bill_sponsor_df, left_on='label', right_on='sponsor')
 
-# drop most bill_df columns
+## drop most bill_df columns
 sponsor_bill_df = sponsor_bill_df[['node_id_x',
                                    'label_x',
                                    'party_x',
@@ -223,7 +225,7 @@ sponsor_bill_df = sponsor_bill_df[['node_id_x',
                                    'label_y',
                                    'node_id_y']]
 
-# rename remaining columns
+## rename remaining columns
 sponsor_bill_df.columns = ['sponsor_node_id',
                            'label',
                            'party',
@@ -236,23 +238,20 @@ sponsor_bill_df.columns = ['sponsor_node_id',
                            'sponsored',
                            'bill_node_id']
 
-# examine revised sponsor_bill_df
-sponsor_bill_df
 
-# limit df to just sponsor_node_id, label, sponsored, bill_node_id
+## limit df to just sponsor_node_id, label, sponsored, bill_node_id
 sponsor_bill_df = sponsor_bill_df[['sponsor_node_id',
                                    'label', 'sponsored',
                                    'bill_node_id']].sort_values(by='sponsor_node_id')
 
-# create dataframe of sponsor nodes with lists of their sponsored bills
+## create dataframe of sponsor nodes with lists of their sponsored bills
 node_bills = group_bills_by_node(sponsor_bill_df, 'sponsor_node_id', 'sponsored')
-print(node_bills)
 
-# iterate through node_bills changing 'sponsored' attribute of sponsor nodes
+## iterate through node_bills changing 'sponsored' attribute of sponsor nodes
 for _, row in node_bills.iterrows():
   G.nodes[row['sponsor_node_id']]['sponsored'] = row['bill_numbers']
 
-# verify modification
+## verify modification
 for node, attributes in sponsor_nodes.items():
     print(f"Node: {node}, Attributes: {attributes}")
 
@@ -291,17 +290,17 @@ cosponsor_df['shape'] = 'o' # cosponsor nodes will be circles
 cosponsor_df.rename(columns={'cosponsor': 'label',
                              'cos_party': 'party'}, inplace=True)
 
-# examine cosponsors
-cosponsor_df
 
 # check for overlap between cosponsors and sponsors
+## note: overlap nodes have already been added to the graph as sponsors
+
 overlap_nodes_df = cosponsor_df.merge(sponsor_df,
                                             on='label',
                                             how='inner',
                                             suffixes=('_cosponsor', '_sponsor'))
 overlap_nodes_df = overlap_nodes_df[['label', 'node_id']]
 
-# join to df_melted to get cosponsored bill numbers
+## join to df_melted to get cosponsored bill numbers
 overlap_nodes_df = overlap_nodes_df.merge(df_melted,
                                           left_on='label',
                                           right_on='cosponsor')
@@ -311,7 +310,7 @@ overlap_nodes_df = overlap_nodes_df[['label',
 overlap_nodes_df.rename(columns={'node_id': 'cos_node_id',
                                  'Legislation Number': 'cosponsored'}, inplace=True)
 
-# join to bill_sponsor_df to get bill node ids
+## join to bill_sponsor_df to get bill node ids
 overlap_nodes_df = overlap_nodes_df.merge(bill_sponsor_df,
                                           left_on='cosponsored',
                                           right_on='label')[['label_x',
@@ -321,8 +320,6 @@ overlap_nodes_df = overlap_nodes_df.merge(bill_sponsor_df,
 overlap_nodes_df.rename(columns={'label_x': 'label',
                                  'cosponsored_x': 'cosponsored',
                                  'node_id': 'bill_node_id'}, inplace=True)
-# examine overlap_nodes_df
-overlap_nodes_df # these nodes have already been added to the graph as sponsors
 
 # create a dataframe of unique cosponsors-only (no sponsor/cosponsors) with node_ids
 ## make list of non-overlapping cosponsors
@@ -340,24 +337,24 @@ csonly_df
 for _, row in csonly_df.iterrows():
     G.add_node(row['node_id'], **row.drop('node_id').to_dict())
 
-# filter for nodes with the attribute 'node_type' == 'sponsor'
+## filter for nodes with the attribute 'node_type' == 'cosponsor'
 cosponsor_nodes = {node:
                    data for node,
                    data in G.nodes(data=True)
                    if data.get("node_type") == "cosponsor"}
 
-# print sponsor nodes with attributes
+## print sponsor nodes with attributes
 for node, attributes in cosponsor_nodes.items():
     print(f"Node: {node}, Attributes: {attributes}")
 
-# link bills to cosponsors
+## link bills to cosponsors
 bill_cosponsor_df = df_melted.merge(csonly_df,
                                     left_on='cosponsor',
                                     right_on='label',
                                     suffixes=['_bill', '_cosponsor'])
 bill_cosponsor_df.rename(columns={'Legislation Number': 'bill',
                                   'node_id': 'cs_node_id'}, inplace=True)
-# add bill_node_id
+## add bill_node_id
 bill_cosponsor_df = bill_cosponsor_df.merge(bill_sponsor_df,
                                             left_on='bill',
                                             right_on='label',
@@ -369,7 +366,7 @@ bill_cosponsor_df = bill_cosponsor_df[['bill',
 bill_cosponsor_df.rename(columns={'node_id': 'bill_node_id',
                                   'bill': 'cosponsored'}, inplace=True)
 
-# make bill-cosponsor edgelist
+## make bill-cosponsor edgelist
 bill_cosponsor_edges = bill_cosponsor_df[['bill_node_id',
                                           'cs_node_id']].reset_index()
 bill_cosponsor_edges.rename(columns={'bill_node_id': 'source',
@@ -383,27 +380,26 @@ del grouped, df_melted
 
 # create dataframe of cosponsor-only nodes with lists of their cosponsored bills
 cs_node_bills = group_bills_by_node(bill_cosponsor_df, 'cs_node_id', 'cosponsored')
-cs_node_bills
 
-# iterate through node_bills changing 'cosponsored' attribute of cosponsor-only nodes
+## iterate through node_bills changing 'cosponsored' attribute of cosponsor-only nodes
 for _, row in cs_node_bills.iterrows():
   G.nodes[row['cs_node_id']]['cosponsored'] = row['bill_numbers']
 
-# filter nodes for node_type 'cosponsor'
+## filter nodes for node_type 'cosponsor'
 csonly_nodes = {node:
                 data for node,
                 data in G.nodes(data=True)
                 if data.get("node_type") == "cosponsor"}
 
-# verify modification
+## verify modification
 for node, attributes in csonly_nodes.items():
     print(f"Node: {node}, Attributes: {attributes}")
 
-# add bill-cosponsor edges to graph
+## add bill-cosponsor edges to graph
 for _, row in bill_cosponsor_edges.iterrows():
   G.add_edge(row['source'], row['target'], color=row['color'])
 
-# print edge list
+## print edge list
 for source, target, attributes in G.edges(data=True):
     print(f"Edge: {(source, target)}, Attributes: {attributes}")
 
@@ -413,31 +409,31 @@ node_bills = group_bills_by_node(overlap_nodes_df,
                                  'cosponsored')
 print(node_bills)
 
-# iterate through node_bills changing 'cosponsored' attribute of sponsor nodes
-# shape, and node_type values
+## iterate through node_bills changing 'cosponsored' attribute of sponsor nodes
+## shape, and node_type values
 for _, row in node_bills.iterrows():
   G.nodes[row['cos_node_id']]['cosponsored'] = row['bill_numbers']
   G.nodes[row['cos_node_id']]['shape'] = 'H'
   G.nodes[row['cos_node_id']]['node_type'] = 'sponsor/cosponsor'
 
-# filter nodes for node_type 'sponsor/cosponsor'
+## filter nodes for node_type 'sponsor/cosponsor'
 spcs_nodes = {node:
               data for node,
               data in G.nodes(data=True)
               if data.get("node_type") == "sponsor/cosponsor"}
 
-# verify modification
+## verify modification
 for node, attributes in spcs_nodes.items():
     print(f"Node: {node}, Attributes: {attributes}")
 
-# create edge dataframe for overlap nodes
+## create edge dataframe for overlap nodes
 overlap_edges_df = overlap_nodes_df[['bill_node_id', 'cos_node_id']]
 overlap_edges_df = overlap_edges_df.rename(columns={'bill_node_id': 'source',
                                                     'cos_node_id': 'target'})
 overlap_edges_df['color'] = 'pink' # these edges represent cosponsorship
 overlap_edges_df
 
-# add cosponsorship edges for legislators who are both sponsors and cosponsors
+## add to graphy cosponsorship edges for legislators who are both sponsors and cosponsors
 for _, row in overlap_edges_df.iterrows():
   G.add_edge(row['source'], row['target'], color=row['color'])
 
@@ -445,40 +441,40 @@ for _, row in overlap_edges_df.iterrows():
 for source, target, attributes in G.edges(data=True):
     print(f"Edge: {(source, target)}, Attribute: {attributes}")
 
-# chart networkx graph, just to check basic structure (this plot will be ugly)
+# plot NetworkX graph, just to check basic structure (this plot will be ugly)
 ## we'll make a prettier plot with Plotly, below.
 ## Get node labels from the 'label' attribute
 labels = nx.get_node_attributes(G, 'label')
 
-## Define node sizes based on node type, providing a default size if 'size' is missing
+## define node sizes based on node type, providing a default size if 'size' is missing
 node_sizes = [G.nodes[node].get('size', 50) for node in G.nodes()]
 
-## Calculate the layout
+## calculate the layout
 pos = nx.spring_layout(G, k=.5)  # Adjust 'k' for spacing
 
-## Define node colors from node color attribute
+## define node colors from node color attribute
 node_colors = [G.nodes[node]['color']
                if 'color' in G.nodes[node]
                else 'gray' for node in G.nodes()]
 
-## Define node shapes
+## define node shapes
 node_shapes = nx.get_node_attributes(G, 'shape') # dictionary of node:shape
 
-## Define edge colors
+## define edge colors
 edge_colors = [G.edges[edge]['color']
                if 'color' in G.edges[edge]
                else 'gray' for edge in G.edges()]
 
-## Draw the graph
+## draw the plot
 plt.figure(figsize=(15,10))
 
-### Create separate lists of nodes by shape
+## create separate lists of nodes by shape
 o_nodes = [node for node, shape in node_shapes.items() if shape == 'o']
 s_nodes = [node for node, shape in node_shapes.items() if shape == 's']
 t_nodes = [node for node, shape in node_shapes.items() if shape == '^']
 h_nodes = [node for node, shape in node_shapes.items() if shape == 'H']
 
-## Draw each shape type separately
+## draw each shape type separately
 draw_netx_nodes(o_nodes, 'o')
 draw_netx_nodes(s_nodes, 's')
 draw_netx_nodes(t_nodes, '^')
@@ -511,15 +507,15 @@ edge_path = os.path.join(out_dir, 'G_edges.csv')
 nodes_df = pd.read_csv(node_path, keep_default_na=False)
 nodes_df
 
-# Create a new graph
+# create a new graph to use with Plotly
 Gfinal = nx.Graph()
 
-# Open the nodes CSV file
+## open the nodes CSV file
 with open(node_path, 'r') as f:
     reader = csv.reader(f)
     next(reader) # Skip the header row if it exists
 
-    # Add nodes to the graph
+    ## Add nodes to the graph
     for row in reader:
         node_id = row[0] # Assuming the first column in the CSV is the node ID
         Gfinal.add_node(node_id)
@@ -533,10 +529,7 @@ with open(node_path, 'r') as f:
                                                   'sponsored': row[8],
                                                   'cosponsored': row[9]}})
 
-# Print the nodes in the graph
-print(Gfinal.nodes(data=True))
-
-# Open the eges CSV file
+## open the edges CSV file
 with open(edge_path, 'r') as f:
     reader = csv.reader(f)
     next(reader) # Skip the header row if it exists
@@ -544,17 +537,14 @@ with open(edge_path, 'r') as f:
     for row in reader:
       Gfinal.add_edge(row[0], row[1], color=row[2])
 
-# Print the nodes in the graph
-print(Gfinal.edges(data=True))
-
 # Plotly code adapted from 'https://plotly.com/python/network-graphs/'
-# calculate node positions using spring_layout
+## calculate node positions using spring_layout
 pos = nx.spring_layout(Gfinal, k=0.15, iterations=20)
 
-# add node positions to the graph
+## add node positions to the graph
 nx.set_node_attributes(Gfinal, pos, 'pos')
 
-# add edges as disconnected lines in a single trace and nodes as a scatter trace
+## add edges as disconnected lines in a single trace and nodes as a scatter trace
 edge_x = []
 edge_y = []
 for edge in Gfinal.edges():
@@ -614,8 +604,7 @@ node_trace = go.Scatter(
         showscale=False),
 )
 
-# Plotly code adapted from 'https://plotly.com/python/network-graphs/'
-# create initial Plotly diagram
+## create initial Plotly diagram
 fig = go.Figure(data=[edge_trace, node_trace],
              layout=go.Layout(
                 title=dict(
@@ -631,13 +620,14 @@ fig = go.Figure(data=[edge_trace, node_trace],
                 )
 fig.update_layout(width=1000, height=800, plot_bgcolor='#F1F1F1')
 
-# get a list of unique node colors for legend
+# create legend
+## get a list of unique node colors for legend
 unique_colors = set(nx.get_node_attributes(Gfinal, 'color').values())
 
-# map the colors to the parties
+## map the colors to the parties
 color_map = {'#0047AB': 'Democrat', '#FFAA33': 'Independent', '#B22222': 'Republican'}
 
-# create separate traces for each legend item
+## create separate traces for each legend item
 for color in unique_colors:
     color_legend_trace = go.Scatter(
         x=[None],
@@ -653,7 +643,7 @@ for color in unique_colors:
     )
     fig.add_trace(color_legend_trace)  # Add each legend trace separately
 
-# add legend to chart
+## add legend to chart
 fig.update_layout(
     legend=dict(
         x=1.05,
@@ -669,16 +659,16 @@ fig.update_layout(
     )
 )
 
-# get a list of unique node shapes for shape legend
+## get a list of unique node shapes for shape legend
 unique_shapes = set(nx.get_node_attributes(Gfinal, 'shape').values())
 
-# map the shapes to the node types
+## map the shapes to the node types
 shape_map = {'s': 'Bill', 'o': 'Cosponsor', '^': 'Sponsor', 'H': 'Sponsor/Cosponsor'}
 
-# map the shapes to the plotly symbol values
+## map the shapes to the plotly symbol values
 plotly_shape_map = {'s': 'square', 'o': 'circle', '^': 'triangle-down', 'H': 'hexagon'}
 
-# Create separate traces for each legend item
+## create separate traces for each legend item
 for shape in unique_shapes:
     # Get the Plotly symbol value, defaulting to 'circle' if not found in the map
     plotly_symbol = plotly_shape_map.get(shape, 'circle')
@@ -698,7 +688,7 @@ for shape in unique_shapes:
     )
     fig.add_trace(shape_legend_trace)  # Add each legend trace separately
 
-# update legend to incude shapes
+## update legend to include shapes
 fig.update_layout(
     legend=dict(
         x=1.05,
@@ -714,8 +704,10 @@ fig.update_layout(
     )
 )
 
-# set path for html output
+# output to html
+
+## set path for html output
 html_path = os.path.join(out_dir, 'network.html')
 
-# write interactive plot to html
+## write interactive plot to html
 fig.write_html(html_path)
