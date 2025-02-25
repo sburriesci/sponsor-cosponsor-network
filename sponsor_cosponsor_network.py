@@ -140,14 +140,12 @@ df_melted = df_melted.drop(columns=['variable',
                                     'cos_state'
                                     ])
 
-df_melted
 
 # make a dataframe of unique bills & their sponsors
 grouped = df_melted.groupby('Legislation Number')
 bill_sponsor_df = grouped.first().reset_index()[['Legislation Number',
                                          'sponsor',
                                          'sp_party']]
-bill_sponsor_df
 
 ## make a dataframe of bill nodes
 bill_sponsor_df.columns = ['label', 'sponsor', 'party']
@@ -325,7 +323,6 @@ csonly_df['node_id'] = csonly_df.index + len(G.nodes) + 1
 csonly_df.drop('index', axis=1, inplace=True)
 csonly_df['sponsor'] = 'NA'
 csonly_df['sponsored'] = 'NA'
-csonly_df
 
 ## add cosponsor-only nodes to graph
 for _, row in csonly_df.iterrows():
@@ -367,14 +364,12 @@ bill_cosponsor_edges.rename(columns={'bill_node_id': 'source',
                                      'cs_node_id': 'target'}, inplace=True)
 bill_cosponsor_edges['style'] = '-' # cosponsor edges will be solid
 bill_cosponsor_edges.drop('index', axis=1, inplace=True)
-bill_cosponsor_edges
 
 # delete some unneeded dataframes
 del grouped, df_melted
 
 # create dataframe of cosponsor-only nodes with lists of their cosponsored bills
 cs_node_bills = group_bills_by_node(bill_cosponsor_df, 'cs_node_id', 'cosponsored')
-cs_node_bills
 
 ## iterate through node_bills changing 'cosponsored' attribute of cosponsor-only nodes
 for _, row in cs_node_bills.iterrows():
@@ -426,7 +421,6 @@ overlap_edges_df = overlap_nodes_df[['bill_node_id', 'cos_node_id']]
 overlap_edges_df = overlap_edges_df.rename(columns={'bill_node_id': 'source',
                                                     'cos_node_id': 'target'})
 overlap_edges_df['style'] = '-' # these edges represent cosponsorship, solid
-overlap_edges_df
 
 ## add cosponsorship edges for legislators who are both sponsors and cosponsors
 for _, row in overlap_edges_df.iterrows():
